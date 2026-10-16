@@ -256,8 +256,8 @@ window.PORTFOLIO = {
       period: "Sep 2024 - Jun 2025",
       summary: "An internship management system for vocational students and their supervising teachers, on web and mobile.",
       tags: ["Web App", "Mobile App", "UI Design"],
-      device: "browser",
-      cover: "1580582932707-520aed937b7b",
+      device: "phone",
+      cover: "assets/img/projects/simpkl-cover.webp",
       intro: "SIMPKL (Sistem Manajemen Praktik Kerja Lapangan) gives students and their supervising teachers one place to run their internships.",
       tools: ["Figma"],
       sections: [
