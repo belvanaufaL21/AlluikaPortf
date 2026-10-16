@@ -237,7 +237,7 @@ window.PORTFOLIO = {
       summary: "A gamified, augmented-reality physical education app that turns screen time into moving time.",
       tags: ["Gamification", "Augmented Reality", "Mobile App", "Testing"],
       device: "phone",
-      cover: "1571019613454-1cb2f99b2d8b",
+      cover: "assets/img/projects/movequest-cover.webp",
       intro: "An interactive physical education app built on gamification and augmented reality, aimed at reducing passive smartphone addiction through direct experience and active learning.",
       tools: ["Figma"],
       sections: [
