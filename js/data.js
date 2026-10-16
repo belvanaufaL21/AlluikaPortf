@@ -277,7 +277,7 @@ window.PORTFOLIO = {
       summary: "Healthcare website and mobile app designs, both now registered for copyright.",
       tags: ["User Flow", "Web", "Mobile", "Copyright"],
       device: "browser",
-      cover: "1576091160550-2173dba999ef",
+      cover: "assets/img/projects/humic-website.webp",
       intro: "Human Centric Engineering (HUMiC) researches computing, informatics, electronics, robotics, mechanical and biomedical engineering, all aimed at improving human health and well-being.",
       stats: [
         ["2", "copyright registrations"],
@@ -291,8 +291,16 @@ window.PORTFOLIO = {
           image: "1581291518857-4e27b48ff24e"
         },
         {
-          heading: "Design",
-          body: "I designed the healthcare website and mobile application interfaces."
+          heading: "Website",
+          body: "The admin website for the disease research database. The dashboard tracks uploaded heartbeat records, myocardial infarction and arrhythmia data, and daily uploads, with an activity log of what operators add. Separate pages handle users, diseases, approvals and adding new data.",
+          shot: "assets/img/projects/humic-website.webp",
+          device: "browser"
+        },
+        {
+          heading: "Mobile app",
+          body: "The mobile app opens the same database to everyone: search for a disease, learn what HealthCare is and what it offers, and browse popular diseases with their record counts.",
+          shot: "assets/img/projects/humic-mobile.webp",
+          device: "phone"
         },
         {
           heading: "Copyright",

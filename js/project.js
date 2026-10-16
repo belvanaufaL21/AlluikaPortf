@@ -20,6 +20,15 @@
       .map((l) => `<span class="line">${esc(l).replace(/^(\s*)(Feature|Scenario|Given|When|Then|And|But)\b/, '$1<span class="kw">$2</span>') || " "}</span>`)
       .join("");
 
+  // A real screenshot inside a section, framed as a browser window or a phone.
+  const screen = (src, device, label) =>
+    device === "phone"
+      ? `<div class="case-shot is-phone reveal"><div class="mockup-frame phone tone"><img class="is-shot" src="${esc(src)}" alt="${esc(label)}" loading="lazy"></div></div>`
+      : `<div class="case-shot reveal"><div class="mockup-frame tone">
+           <div class="mockup-bar"><i></i><i></i><i></i><span class="mono">${esc(label)}</span></div>
+           <img class="is-shot" src="${esc(src)}" alt="${esc(label)}" loading="lazy">
+         </div></div>`;
+
   // Real screenshots (local files) show in full; placeholder photos are cropped to fit.
   const shot = /^\d+-[0-9a-f]+$/.test(p.cover) ? "" : ' class="is-shot"';
   const mockup =
@@ -58,6 +67,7 @@
             : ""
         }
         ${s.image ? `<figure class="reveal tone" data-fx="figure"><img src="${img(s.image)}" alt="" loading="lazy"></figure>` : ""}
+        ${s.shot ? screen(s.shot, s.device, `${p.title}: ${s.heading}`) : ""}
       </article>`
     )
     .join("");
