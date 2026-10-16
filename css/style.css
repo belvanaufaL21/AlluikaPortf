@@ -415,13 +415,17 @@ html:not(.has-motion) .role-card:hover { transform: translateY(-4px); }
 .rc-qa {
   background: var(--gray);
   -webkit-mask:
-    radial-gradient(circle 16px at 0 62%, #0000 98%, #000) left / 51% 100% no-repeat,
-    radial-gradient(circle 16px at 100% 62%, #0000 98%, #000) right / 51% 100% no-repeat;
+    radial-gradient(circle 16px at 0 var(--perf), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 16px at 100% var(--perf), #0000 98%, #000) right / 51% 100% no-repeat;
           mask:
-    radial-gradient(circle 16px at 0 62%, #0000 98%, #000) left / 51% 100% no-repeat,
-    radial-gradient(circle 16px at 100% 62%, #0000 98%, #000) right / 51% 100% no-repeat;
+    radial-gradient(circle 16px at 0 var(--perf), #0000 98%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 16px at 100% var(--perf), #0000 98%, #000) right / 51% 100% no-repeat;
 }
 .rc-qa .rc-blurb, .rc-qa .count { color: #55544f; }
+/* The perforation sits just under the checklist (26px padding + 150px visual + 22px),
+   and the extra margin keeps the text at least 20px below it on every screen size. */
+.rc-qa { --perf: 198px; }
+.rc-qa .rc-visual { margin-bottom: 20px; }
 .rv-qa { display: flex; flex-direction: column; justify-content: center; gap: 14px; }
 .check-row { display: flex; align-items: center; gap: 12px; }
 .check-row svg { width: 30px; height: 30px; flex: none; }
@@ -431,7 +435,7 @@ html:not(.has-motion) .role-card:hover { transform: translateY(-4px); }
 .check-row.bug .tick { stroke: var(--offwhite); }
 .check-row i { display: block; height: 9px; width: var(--w); border-radius: 5px; background: rgba(25, 25, 25, 0.22); }
 .rc-qa::after {
-  content: ""; position: absolute; left: 22px; right: 22px; top: 62%;
+  content: ""; position: absolute; left: 22px; right: 22px; top: var(--perf);
   border-top: 2px dashed rgba(25, 25, 25, 0.25);
 }
 
