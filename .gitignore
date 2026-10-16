@@ -1,0 +1,8 @@
+# Private: CVs include phone number and home address
+assets/cv/
+
+# Local preview settings
+.claude/
+
+# No longer used by the site
+assets/img/profile.jpg

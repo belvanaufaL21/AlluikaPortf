@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Belvanaufal | UI/UX, System Analyst, Product, QA & Web Dev</title>
+  <meta name="description" content="Muhammad Ghaziveda Belvanaufal, Software Engineer bridging user experience, system analysis, product development, software quality and Website Developer. Bandung, Indonesia.">
+  <link rel="icon" href="assets/img/avatar.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="home">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="display hero-title reveal" data-fx="chars"><span>Ghaziveda</span><span>Belvanaufal<i class="dot" data-split-skip>.</i></span></h1>
+        <div class="summary-box reveal" data-fx="clip">
+          <p>
+            Software Engineer bridging user experience, system analysis, product development, software quality and Website Developer.
+            <span class="meta mono">Bandung, Indonesia</span>
+          </p>
+          <a class="btn btn-dark" href="#work">See my work <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-badges reveal" data-fx="pop">
+          <span class="badge">2nd Place, SITEFEST 4.0 UI/UX Design Competition</span>
+          <span class="badge">Finalist, HCI International 2025</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee"><div class="marquee-track" id="marquee"></div></div>
+    </div>
+
+    <section class="section" id="roles">
+      <div class="container">
+        <span class="section-kicker mono reveal" data-fx="left">What I do</span>
+        <h2 class="display section-title reveal" data-fx="words">Five roles</h2>
+        <div class="roles" id="roles-grid" style="margin-top:40px"></div>
+      </div>
+    </section>
+
+    <section class="section" id="work" style="padding-top:0">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker mono reveal" data-fx="left">Portfolio</span>
+            <h2 class="display section-title reveal" data-fx="words">Selected work</h2>
+          </div>
+        </div>
+        <div class="filters reveal" data-fx="stagger" id="filters" role="group" aria-label="Filter projects by role"></div>
+        <p class="role-note" id="role-note" aria-live="polite"></p>
+        <div class="grid" id="grid"></div>
+        <div class="see-more-row"><button class="btn btn-ghost" id="see-more" type="button" aria-controls="grid" hidden></button></div>
+      </div>
+    </section>
+
+    <section class="section" id="experience" style="padding-top:0">
+      <div class="container">
+        <span class="section-kicker mono reveal" data-fx="left">Timeline</span>
+        <h2 class="display section-title reveal" data-fx="words" style="margin-bottom:40px">Experience</h2>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <section class="section" id="about" style="padding-top:0">
+      <div class="container">
+        <span class="section-kicker mono reveal" data-fx="left">About me</span>
+        <h2 class="display section-title reveal" data-fx="words" style="margin-bottom:40px">Hello</h2>
+        <div class="about">
+          <div class="about-side">
+            <div class="about-photo reveal" data-fx="photo">
+              <img class="ph-bg" src="assets/img/profile-bg.jpg" alt="">
+              <img class="ph-person" src="assets/img/profile-person.webp" alt="Portrait of Muhammad Ghaziveda Belvanaufal">
+            </div>
+            <div class="reveal" data-fx="skills">
+              <h4 class="mono about-label">Skills & tools</h4>
+              <div class="skill-groups" id="skills"></div>
+            </div>
+          </div>
+          <div class="about-text">
+            <p class="reveal">Software Engineering graduate from Telkom University with expertise in UI/UX design, system analysis, product development, and quality assurance.</p>
+            <p class="reveal">Experienced in translating user needs and business requirements into clear system architectures, interactive digital prototypes, and thoroughly tested software solutions. Passionate about bridging the gap between business vision and technical execution to deliver reliable, end-to-end digital products.</p>
+            <div class="about-cols">
+              <div class="reveal" data-fx="edu">
+                <h4 class="mono about-label">Education</h4>
+                <ul class="list" id="education"></ul>
+              </div>
+              <div class="reveal" data-fx="awards">
+                <h4 class="mono about-label">Achievements</h4>
+                <ul class="awards" id="achievements"></ul>
+              </div>
+            </div>
+            <div class="reveal" data-fx="certs" style="margin-top:44px">
+              <h4 class="mono about-label">Certificates & others</h4>
+              <ul class="certs" id="certificates"></ul>
+            </div>
+          </div>
+        </div>
+
+        <dialog class="skill-dialog" id="skill-dialog" aria-labelledby="skill-dialog-title">
+          <div class="skill-dialog-body">
+            <form method="dialog" class="skill-dialog-close"><button aria-label="Close">✕</button></form>
+            <span class="mono section-kicker">Skills & tools</span>
+            <h3 class="display" id="skill-dialog-title"></h3>
+            <p id="skill-dialog-summary"></p>
+            <div class="skill-dialog-items" id="skill-dialog-items"></div>
+          </div>
+        </dialog>
+
+        <dialog class="skill-dialog cert-dialog" id="cert-dialog" aria-labelledby="cert-dialog-title">
+          <!-- Outside the scrolling body so the close button stays put while you scroll. -->
+          <form method="dialog" class="skill-dialog-close"><button aria-label="Close">✕</button></form>
+          <div class="skill-dialog-body">
+            <span class="mono section-kicker" id="cert-dialog-meta"></span>
+            <h3 id="cert-dialog-title"></h3>
+            <p id="cert-dialog-issuer"></p>
+            <div class="cert-images" id="cert-dialog-images"></div>
+          </div>
+        </dialog>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@13.5.0/dist/motion.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
