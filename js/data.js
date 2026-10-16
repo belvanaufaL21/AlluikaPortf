@@ -166,7 +166,7 @@ window.PORTFOLIO = {
     {
       id: "infomedia",
       title: "PT Infomedia Nusantara",
-      roles: ["pbd"],
+      roles: ["pbd", "uiux", "sa"],
       org: "PT. Infomedia Nusantara",
       period: "Jul 2025 - Jan 2026",
       summary: "Product & Business Development for CRM products: system documentation, market benchmarking, Gherkin backlogs and internal guides.",
