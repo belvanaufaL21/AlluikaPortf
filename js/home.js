@@ -196,15 +196,19 @@
     )
     .join("");
 
+  // Awards with a certificate are buttons that open it in the pop-up.
   $("achievements").innerHTML = D.achievements
-    .map(
-      (a) => `
-      <li class="award">
+    .map((a, i) => {
+      const inner = `
         <span class="mono">${esc(a.year)}</span>
         <strong>${esc(a.title)}</strong>
-        <span>${esc(a.text)}</span>
-      </li>`
-    )
+        <span class="award-text">${esc(a.text)}</span>`;
+      return a.images
+        ? `<li><button class="award award-btn" type="button" data-i="${i}" aria-haspopup="dialog">${inner}
+             <span class="cert-view mono">View certificate ${icons.arrow.replace("<svg", '<svg width="12" height="12"')}</span>
+           </button></li>`
+        : `<li class="award">${inner}</li>`;
+    })
     .join("");
 
   // Certificates: each opens a pop-up with the certificate image(s).
@@ -223,11 +227,7 @@
     .join("");
 
   const certDialog = $("cert-dialog");
-  $("certificates").addEventListener("click", (ev) => {
-    const b = ev.target.closest(".cert");
-    if (!b) return;
-    const c = D.certificates[+b.dataset.i];
-    if (!c.images) return;
+  function openCert(c) {
     $("cert-dialog-meta").textContent = `${c.type} · ${c.year}`;
     $("cert-dialog-title").textContent = c.title;
     $("cert-dialog-issuer").textContent = c.issuer || "";
@@ -243,6 +243,16 @@
     certDialog.showModal();
     certDialog.querySelector(".skill-dialog-body").scrollTop = 0;
     if (window.FX) FX.dialog(certDialog);
+  }
+  $("certificates").addEventListener("click", (ev) => {
+    const b = ev.target.closest(".cert");
+    const c = b && D.certificates[+b.dataset.i];
+    if (c && c.images) openCert(c);
+  });
+  $("achievements").addEventListener("click", (ev) => {
+    const b = ev.target.closest(".award-btn");
+    const a = b && D.achievements[+b.dataset.i];
+    if (a && a.images) openCert({ type: "Award", year: a.year, title: `${a.title}: ${a.text}`, issuer: a.issuer, images: a.images });
   });
 
   // Skills: group names only; details open in a dialog.

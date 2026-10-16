@@ -385,7 +385,12 @@ window.PORTFOLIO = {
 
   // Championships and awards only, shown next to Education.
   achievements: [
-    { year: "2025", title: "2nd Place", text: "UI/UX Design Competition, SITEFEST 4.0" },
+    {
+      year: "2025", title: "2nd Place", text: "UI/UX Design Competition, SITEFEST 4.0",
+      // With `images`, the award opens its certificate in a pop-up.
+      issuer: "National UI/UX Design Competition, SITEFEST 4.0 by BEM Primakara University, 8 to 11 May 2025",
+      images: ["assets/certs/sitefest-4-uiux-2nd.webp"]
+    },
     { year: "2025", title: "Finalist", text: "HCI International 2025" }
   ],
 
