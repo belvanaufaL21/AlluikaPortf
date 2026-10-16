@@ -53,7 +53,7 @@ window.PORTFOLIO = {
       name: "Website Developer",
       short: "Web Dev",
       color: "#d9382b",
-      blurb: "Building and shipping for the web, from a WordPress school website to a full-stack LLM tool with Python pipelines and a JIRA integration."
+      blurb: "Building and shipping for the web: a full-stack LLM tool with Python evaluation pipelines and a JIRA integration."
     }
   ],
 
@@ -61,7 +61,7 @@ window.PORTFOLIO = {
     {
       id: "stasiun-cahaya",
       title: "Stasiun Cahaya",
-      roles: ["qa"],
+      roles: ["qa", "uiux"],
       org: "Celiium Studio, client: PT. Stasiun Cahaya Logistik",
       period: "Aug 2026 - Present",
       summary: "Testing a multi-role operations platform for a freight-forwarding and container depot company.",
@@ -94,7 +94,7 @@ window.PORTFOLIO = {
     {
       id: "506-trans",
       title: "506 Trans",
-      roles: ["qa"],
+      roles: ["qa", "uiux"],
       org: "Celiium Studio, client: 506 Trans",
       period: "Aug - Sep 2026",
       summary: "QA for a bus & fleet rental service: a customer booking app and the admin panel behind it.",
@@ -297,26 +297,6 @@ window.PORTFOLIO = {
         {
           heading: "Copyright",
           body: "Both designs received a Copyright Registration Letter: one for the healthcare website, one for the mobile application. I also wrote the documentation report for the work."
-        }
-      ]
-    },
-    {
-      id: "smkn15-website",
-      title: "SMKN 15 Bandung",
-      roles: ["webdev"],
-      org: "SMKN 15 Bandung",
-      period: "Sep 2024 - Jan 2025",
-      summary: "A WordPress website for a vocational high school, built and deployed for its whole school community.",
-      tags: ["WordPress", "Website", "Deployment"],
-      device: "browser",
-      cover: "1498050108023-c5249f4df085",
-      intro: "A school website has to serve everyone at once (students, teachers, parents and the public) with the information, communication and services they need from the school.",
-      tools: ["WordPress"],
-      sections: [
-        {
-          heading: "Build & deploy",
-          body: "I built the SMKN 15 Bandung website on WordPress and deployed it, giving the school community one place for information and communication.",
-          image: "1488590528505-98d2b5aba04b"
         }
       ]
     },
