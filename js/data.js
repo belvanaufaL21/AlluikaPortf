@@ -378,7 +378,6 @@ window.PORTFOLIO = {
     { period: "Jul 2025 - Jan 2026", title: "Product & Business Development", org: "PT. Infomedia Nusantara", note: "CRM documentation, benchmarking, BDD backlogs, internal guides", role: "pbd" },
     { period: "May 2025 - Present", title: "UI/UX Designer", org: "FlicknFit", note: "AI fashion recommendation app", role: "uiux" },
     { period: "Nov 2024 - Dec 2025", title: "Laboratory Assistant · UI/UX Mentor", org: "Chevalier Laboratory SAS", note: "Mentored students on UI/UX methodology and major assignments", role: "uiux" },
-    { period: "Sep 2024 - Jan 2025", title: "WordPress Developer", org: "SMKN 15 Bandung", note: "Built and deployed the school website", role: "webdev" },
     { period: "Sep - Nov 2024", title: "UI/UX Designer (Intern)", org: "CoE HUMiC Engineering", note: "Healthcare web & mobile, copyright registered", role: "uiux" },
     { period: "Nov 2023 - Dec 2024", title: "IT Development Staff", org: "IEEE Student Branch Telkom University", note: "Committee, IEEE Innovation Challenge Lite 2024", role: "uiux" }
   ],
