@@ -55,9 +55,7 @@
         .join("")}</div>`
     : "";
 
-  const sections = p.sections
-    .map(
-      (s) => `
+  const block = (s) => `
       <article class="case-block">
         <h2 class="display reveal" data-fx="words">${esc(s.heading)}</h2>
         <div class="body reveal"><div></div><p>${esc(s.body)}</p></div>
@@ -68,9 +66,36 @@
         }
         ${s.image ? `<figure class="reveal tone" data-fx="figure"><img src="${img(s.image)}" alt="" loading="lazy"></figure>` : ""}
         ${s.shot ? screen(s.shot, s.device, `${p.title}: ${s.heading}`) : ""}
-      </article>`
-    )
-    .join("");
+      </article>`;
+
+  // Projects with more than one role get a tab per role; each section says which role it belongs to.
+  // Sections without a role are shared and show above the tabs.
+  const multi = p.roles.length > 1;
+  const wanted = new URLSearchParams(location.search).get("tab");
+  const active = p.roles.includes(wanted) ? wanted : p.roles[0];
+  const tabs = !multi
+    ? ""
+    : `
+      <div class="role-tabs reveal" role="tablist" aria-label="My roles in this project">
+        ${p.roles
+          .map(
+            (r) => `<button class="role-tab" type="button" role="tab" id="tab-${r}" data-role="${r}"
+                      aria-controls="panel-${r}" aria-selected="${r === active}" tabindex="${r === active ? 0 : -1}">${esc(role(r).name)}</button>`
+          )
+          .join("")}
+      </div>
+      ${p.roles
+        .map((r) => {
+          const own = p.sections.filter((s) => s.role === r);
+          return `
+          <div class="role-panel" role="tabpanel" id="panel-${r}" aria-labelledby="tab-${r}"${r === active ? "" : " hidden"}>
+            <p class="role-panel-note mono">My work as ${esc(role(r).name)}</p>
+            ${own.length ? own.map(block).join("") : `<p class="grid-empty">Details for this role are coming soon.</p>`}
+          </div>`;
+        })
+        .join("")}`;
+
+  const sections = p.sections.filter((s) => !multi || !s.role).map(block).join("") + tabs;
 
   // "More projects": others sharing a role first, then the rest.
   const others = D.projects.filter((x) => x.id !== p.id);
@@ -110,7 +135,7 @@
     <section class="section" style="padding-top:0">
       <div class="container">
         <h2 class="display section-title reveal" data-fx="words">More projects</h2>
-        <div class="grid">${more.map(card).join("")}</div>
+        <div class="grid">${more.map((x) => card(x)).join("")}</div>
       </div>
     </section>`;
 
@@ -136,6 +161,39 @@
     update();
   } else {
     frame.style.setProperty("--t", "1");
+  }
+
+  // Tab switching (click or arrow keys).
+  const tabList = main.querySelector(".role-tabs");
+  if (tabList) {
+    const select = (btn, focus) => {
+      const r = btn.dataset.role;
+      tabList.querySelectorAll(".role-tab").forEach((b) => {
+        const on = b === btn;
+        b.setAttribute("aria-selected", String(on));
+        b.tabIndex = on ? 0 : -1;
+        main.querySelector(`#panel-${b.dataset.role}`).hidden = !on;
+      });
+      if (focus) btn.focus();
+      const panel = main.querySelector(`#panel-${r}`);
+      if (window.FX && window.Motion) Motion.animate(panel, { opacity: [0, 1], y: [16, 0] }, { duration: 0.45, ease: [0.2, 0.7, 0.2, 1] });
+      reveal(panel);
+      const url = new URL(location.href);
+      url.searchParams.set("tab", r);
+      history.replaceState(null, "", url);
+    };
+    tabList.addEventListener("click", (e) => {
+      const b = e.target.closest(".role-tab");
+      if (b) select(b);
+    });
+    tabList.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const all = [...tabList.querySelectorAll(".role-tab")];
+      const i = all.indexOf(document.activeElement);
+      if (i < 0) return;
+      e.preventDefault();
+      select(all[(i + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length], true);
+    });
   }
 
   reveal();

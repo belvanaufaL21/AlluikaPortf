@@ -264,6 +264,33 @@ button { font: inherit; color: inherit; }
 .case-block figure { margin: 40px 0 0; border-radius: var(--radius); overflow: hidden; background: var(--surface); }
 .case-block figure img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; }
 
+/* Role tabs on projects with more than one role */
+.role-tabs {
+  position: sticky; top: 76px; z-index: 5;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: clamp(56px, 8vw, 96px);
+  padding: 10px 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.role-tab {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.role-tab::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+.role-tab:hover { border-color: var(--black); }
+.role-tab[aria-selected="true"] { background: var(--black); color: var(--offwhite); border-color: var(--black); }
+.role-tab[aria-selected="true"]::before { background: var(--red); }
+.role-panel-note { margin: 28px 0 0; color: var(--muted); }
+.role-panel .case-block:first-of-type { padding-top: 32px; }
+.role-panel .grid-empty { margin-top: 32px; }
+
 /* Screenshots inside case-study sections sit flat (no scroll tilt). */
 .case-shot { margin-top: 40px; padding: clamp(20px, 4vw, 48px); border-radius: var(--radius); background: var(--surface); }
 .case-shot .mockup-frame { --t: 1; max-width: 1040px; }
@@ -658,6 +685,10 @@ html.has-motion .reveal { transition: none; transform: none; }
 }
 
 @media (max-width: 720px) {
+  /* One swipeable row of role tabs so the pinned bar stays small */
+  .role-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; top: 70px; }
+  .role-tabs::-webkit-scrollbar { display: none; }
+  .role-tab { flex: none; padding: 8px 14px; font-size: 14px; }
   .nav a:not(.btn) { display: none; }
   .brand-text span { display: none; }
   .summary-box { flex-direction: column; align-items: flex-start; }

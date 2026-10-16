@@ -71,9 +71,10 @@
       .join("");
   }
 
-  function card(p) {
+  // `tab` opens a multi-role project on that role's tab.
+  function card(p, tab) {
     return `
-      <a class="card reveal" data-fx="card" href="project.html?p=${encodeURIComponent(p.id)}">
+      <a class="card reveal" data-fx="card" href="project.html?p=${encodeURIComponent(p.id)}${tab && p.roles.length > 1 && p.roles.includes(tab) ? `&tab=${tab}` : ""}">
         <div class="card-media tone">
           <img src="${img(p.cover, 900)}" alt="" loading="lazy">
           <div class="card-roles">${rolePills(p.roles)}</div>

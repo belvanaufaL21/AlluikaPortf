@@ -131,8 +131,8 @@
     const shown = first || new Set(list);
     const hidden = list.filter((p) => !shown.has(p));
     $("grid").innerHTML =
-      list.filter((p) => shown.has(p)).map(card).join("") +
-      hidden.map((p) => card(p).replace('<a class="card', '<a hidden class="card is-extra')).join("") ||
+      list.filter((p) => shown.has(p)).map((p) => card(p, id)).join("") +
+      hidden.map((p) => card(p, id).replace('<a class="card', '<a hidden class="card is-extra')).join("") ||
       `<p class="grid-empty reveal">Projects for this role are coming soon.</p>`;
     $("see-more").hidden = !hidden.length;
     $("see-more").setAttribute("aria-expanded", "false");
