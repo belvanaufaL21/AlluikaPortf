@@ -100,7 +100,7 @@ window.PORTFOLIO = {
       summary: "QA for a bus & fleet rental service: a customer booking app and the admin panel behind it.",
       tags: ["Black-Box Testing", "Visual Regression", "Mobile", "Admin Panel"],
       device: "browser",
-      cover: "1544620347-c4fd4a3d5957",
+      cover: "assets/img/projects/506-trans-cover.webp",
       intro: "506 Trans rents out buses and fleet vehicles. Customers book through a mobile app; the team runs drivers, bookings and cash through an admin panel.",
       stats: [
         ["4", "customer-facing mobile flows"],
