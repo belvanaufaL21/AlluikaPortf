@@ -20,12 +20,14 @@
       .map((l) => `<span class="line">${esc(l).replace(/^(\s*)(Feature|Scenario|Given|When|Then|And|But)\b/, '$1<span class="kw">$2</span>') || " "}</span>`)
       .join("");
 
+  // Real screenshots (local files) show in full; placeholder photos are cropped to fit.
+  const shot = /^\d+-[0-9a-f]+$/.test(p.cover) ? "" : ' class="is-shot"';
   const mockup =
     p.device === "phone"
-      ? `<div class="mockup-frame phone tone"><img src="${img(p.cover, 700)}" alt="${esc(p.title)} placeholder image"></div>`
+      ? `<div class="mockup-frame phone tone"><img${shot} src="${img(p.cover, 700)}" alt="${esc(p.title)} placeholder image"></div>`
       : `<div class="mockup-frame tone">
            <div class="mockup-bar"><i></i><i></i><i></i><span class="mono">${esc(p.title)}</span></div>
-           <img src="${img(p.cover, 1800)}" alt="${esc(p.title)} placeholder image">
+           <img${shot} src="${img(p.cover, 1800)}" alt="${esc(p.title)} placeholder image">
          </div>`;
 
   const meta = [

@@ -67,7 +67,7 @@ window.PORTFOLIO = {
       summary: "Testing a multi-role operations platform for a freight-forwarding and container depot company.",
       tags: ["Use Case Testing", "Black-Box Testing", "Regression", "Data Consistency"],
       device: "browser",
-      cover: "1494412574643-ff11b0a5c1c3",
+      cover: "assets/img/projects/stasiun-cahaya-cover.webp",
       intro: "An internal platform that runs the day-to-day of a container depot: Gate In/Out, maintenance & repair (MNR), Finance, Trucking and a Client Portal, each used by a different team.",
       stats: [
         ["5", "operational modules tested"],
@@ -134,7 +134,7 @@ window.PORTFOLIO = {
       summary: "A tool that turns user stories into Gherkin test scenarios with LLMs, and measures how good those scenarios really are.",
       tags: ["LLM", "Gherkin / BDD", "Evaluation", "JIRA"],
       device: "browser",
-      cover: "1677442136019-21780ecad995",
+      cover: "assets/img/projects/specweave-cover.webp",
       intro: "Writing test scenarios by hand is slow. For my thesis I built SpecWeave, a full-stack tool that generates Gherkin scenarios from user stories with four different LLMs, then scores the results against human-written reference test cases.",
       stats: [
         ["4", "LLMs compared"],
@@ -170,24 +170,24 @@ window.PORTFOLIO = {
       org: "PT. Infomedia Nusantara",
       period: "Jul 2025 - Jan 2026",
       summary: "Product & Business Development for CRM products: system documentation, market benchmarking, Gherkin backlogs and internal guides.",
-      tags: ["CRM", "Documentation", "Benchmarking", "Gherkin / BDD"],
+      tags: ["Product Documentation", "Backlog Management", "Market Analysis", "User Manual"],
       device: "browser",
-      cover: "1552664730-d307ca884978",
+      cover: "assets/img/projects/infomedia-cover.webp",
       intro: "PT Infomedia Nusantara, a subsidiary of Telkom Indonesia, provides Business Process Outsourcing through two portfolios: Customer Relationship Management (CRM) and Shared Service Operation (SSO). I worked in Product & Business Development on its CRM products.",
       tools: ["GitBook"],
       sections: [
         {
-          heading: "System documentation",
+          heading: "Product documentation",
           body: "I wrote the System Architecture, Functional Topology and Entity Relationship Diagram documentation for CRM products, giving QA and engineering one shared technical reference for test planning.",
           image: "1558494949-ef010cbdcc31"
         },
         {
-          heading: "Market benchmark",
+          heading: "Market & competitor analysis",
           body: "I benchmarked CRM and omnichannel platforms and conducted market research. The findings fed into the quality standards for Infomedia's own products.",
           image: "1460925895917-afdab827c52f"
         },
         {
-          heading: "BDD backlogs",
+          heading: "Backlog management",
           body: "I wrote product backlogs and acceptance criteria for management systems in Gherkin. Given / When / Then reads like plain language for business stakeholders and maps directly onto test cases for QA, so everyone reviews the same text.",
           code: "Feature: Ticket assignment\n\n  Scenario: Online agent receives a new ticket\n    Given an agent is marked as online\n    When a customer submits a new ticket\n    Then the ticket is assigned to that agent\n    And the agent is notified",
           codeLabel: "Illustrative example"
@@ -197,7 +197,7 @@ window.PORTFOLIO = {
           body: "I researched and documented how the WhatsApp Business Calling mechanism works, as a reference for the omnichannel product team."
         },
         {
-          heading: "Manual guide",
+          heading: "User manual guide",
           body: "I wrote an internal manual guide and published it in GitBook as the team's reference documentation.",
           image: "1434030216411-0b793f4b4173"
         }
@@ -212,7 +212,7 @@ window.PORTFOLIO = {
       summary: "An AI fashion app that recommends outfits for your style and your day, and points you to local brands.",
       tags: ["Information Architecture", "Mobile App", "UI Design", "AI"],
       device: "phone",
-      cover: "1445205170230-053b83016050",
+      cover: "assets/img/projects/flicknfit-cover.webp",
       intro: "FlicknFit uses AI to recommend outfits tailored to your style and daily needs, quickly and simply. It also recommends local brands, helping them keep growing.",
       tools: ["Figma"],
       sections: [
