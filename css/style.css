@@ -300,6 +300,9 @@ button { font: inherit; color: inherit; }
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 .role-tab::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+/* Auto margins centre the tabs, and still let a too-wide row scroll from its start on phones */
+.role-tab:first-child { margin-left: auto; }
+.role-tab:last-child { margin-right: auto; }
 .role-tab:hover { border-color: var(--black); }
 .role-tab[aria-selected="true"] { background: var(--black); color: var(--offwhite); border-color: var(--black); }
 .role-tab[aria-selected="true"]::before { background: var(--red); }
