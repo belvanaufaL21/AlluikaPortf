@@ -55,9 +55,13 @@
         .join("")}</div>`
     : "";
 
-  const block = (s) => `
+  const pad = (n) => String(n).padStart(2, "0");
+
+  // One part of a case study. `num` and `part` come from the role's structure (js/templates.js).
+  const block = (s, num, part) => `
       <article class="case-block">
-        <h2 class="display reveal" data-fx="words">${esc(s.heading)}</h2>
+        ${num ? `<span class="case-kicker mono reveal" data-fx="left">${pad(num)} · ${esc(part.heading)}</span>` : ""}
+        <h2 class="display reveal" data-fx="words">${esc(s.heading || part.heading)}</h2>
         <div class="body reveal"><div></div><p>${esc(s.body)}</p></div>
         ${
           s.code
@@ -65,12 +69,40 @@
             : ""
         }
         ${s.image ? `<figure class="reveal tone" data-fx="figure"><img src="${img(s.image)}" alt="" loading="lazy"></figure>` : ""}
-        ${s.shot ? screen(s.shot, s.device, `${p.title}: ${s.heading}`) : ""}
+        ${s.shot ? screen(s.shot, s.device, `${p.title}: ${s.heading || part.heading}`) : ""}
       </article>`;
 
-  // Projects with more than one role get a tab per role; each section says which role it belongs to.
-  // Sections without a role are shared and show above the tabs.
+  // Draft view (&draft in the URL): empty parts of the structure show as "to fill" boxes.
+  const draft = new URLSearchParams(location.search).has("draft");
+  const todo = (num, part, r) => `
+      <article class="case-block case-todo">
+        <div class="todo-box">
+          <span class="mono">${pad(num)} · To fill · slot: "${part.key}"${multi ? ` · role: "${r}"` : ""}</span>
+          <h3>${esc(part.heading)}</h3>
+          <p>${esc(part.hint)}</p>
+        </div>
+      </article>`;
+
+  // Every role follows its case-study structure; filled parts render in order, empty ones are
+  // hidden (or shown as "to fill" in draft view). Sections with an unknown slot go last.
   const multi = p.roles.length > 1;
+  const structured = (r) => {
+    const own = p.sections.filter((s) => (s.role || (multi ? null : p.roles[0])) === r);
+    const parts = (window.TEMPLATES && TEMPLATES[r]) || [];
+    let n = 0;
+    const html = parts.map((part) => {
+      const filled = own.filter((s) => s.slot === part.key);
+      if (filled.length) {
+        const k = ++n; // several sections in one part share its number; only the first shows the label
+        return filled.map((s, i) => block(s, i === 0 ? k : 0, part)).join("");
+      }
+      return draft ? todo(++n, part, r) : "";
+    });
+    const loose = own.filter((s) => !parts.some((part) => part.key === s.slot)).map((s) => block(s));
+    return { html: html.join("") + loose.join(""), filled: own.length };
+  };
+
+  // Projects with more than one role get a tab per role.
   const wanted = new URLSearchParams(location.search).get("tab");
   const active = p.roles.includes(wanted) ? wanted : p.roles[0];
   const tabs = !multi
@@ -86,16 +118,16 @@
       </div>
       ${p.roles
         .map((r) => {
-          const own = p.sections.filter((s) => s.role === r);
+          const part = structured(r);
           return `
           <div class="role-panel" role="tabpanel" id="panel-${r}" aria-labelledby="tab-${r}"${r === active ? "" : " hidden"}>
             <p class="role-panel-note mono">My work as ${esc(role(r).name)}</p>
-            ${own.length ? own.map(block).join("") : `<p class="grid-empty">Details for this role are coming soon.</p>`}
+            ${part.filled || draft ? part.html : `<p class="grid-empty">Details for this role are coming soon.</p>`}
           </div>`;
         })
         .join("")}`;
 
-  const sections = p.sections.filter((s) => !multi || !s.role).map(block).join("") + tabs;
+  const sections = multi ? tabs : structured(p.roles[0]).html;
 
   // "More projects": others sharing a role first, then the rest.
   const others = D.projects.filter((x) => x.id !== p.id);
@@ -194,6 +226,13 @@
       e.preventDefault();
       select(all[(i + (e.key === "ArrowRight" ? 1 : all.length - 1)) % all.length], true);
     });
+  }
+
+  if (draft) {
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div class="draft-banner mono">Draft view: empty parts are shown so you know what to fill. Visitors only see filled parts.</div>`
+    );
   }
 
   reveal();

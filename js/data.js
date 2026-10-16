@@ -77,23 +77,27 @@ window.PORTFOLIO = {
       sections: [
         {
           role: "qa",
+          slot: "strategy",
           heading: "Use case testing",
           body: "I manually tested all five modules with Use Case Testing, validating each flow against the 21 source activity diagrams (AD01 to AD21) and the feature spec. Testing against the diagrams, not just the screens, surfaced both functional defects and problems in the underlying data model.",
           image: "1586281380349-632531db7ed4"
         },
         {
           role: "qa",
+          slot: "execution",
           heading: "Data consistency",
           body: "The modules share data: a record created at the gate eventually lands in Finance. I ran a data-driven black-box audit across modules and flagged Finance records (invoices, totals and principals) that had drifted out of sync with their source.",
           image: "1454165804606-c3d57bc86b40"
         },
         {
           role: "qa",
+          slot: "execution",
           heading: "Regression",
           body: "As fixes landed, I ran iterative regression passes against the business rules most likely to break: multi-currency auto-detection, party-breakdown calculations, and route/tariff structures."
         },
         {
           role: "uiux",
+          slot: "design",
           heading: "Login screen",
           body: "One login for every team. The system reads the account's role and opens the matching menu and dashboard, while the illustration previews what's inside: today's gate activity updating live, and documents issued automatically once Gate Out is done.",
           shot: "assets/img/projects/stasiun-cahaya-cover.webp",
@@ -121,23 +125,27 @@ window.PORTFOLIO = {
       sections: [
         {
           role: "qa",
+          slot: "strategy",
           heading: "Screen by screen",
           body: "Every delivered screen was tested against the reference design and functional spec using black-box testing. Playwright screenshots backed each check, giving the team a visual-regression baseline to compare the next build against.",
           image: "1559028012-481c04fa702d"
         },
         {
           role: "qa",
+          slot: "execution",
           heading: "Booking flow",
           body: "I walked the four-step booking flow (Data & Rute → Metode Pembayaran → Menunggu Pembayaran → Invoice), checking that price and down payment recalculate live, countdown timers behave, and the invoice shows the right state for each payment status.",
           image: "1563013544-824ae1b704d3"
         },
         {
           role: "qa",
+          slot: "defects",
           heading: "Admin logic",
           body: "On the admin side, I verified the FIFO driver rotation and the running Petty Cash balance against expected outputs, and flagged the calculation mismatches I found."
         },
         {
           role: "uiux",
+          slot: "design",
           heading: "Landing page",
           body: "The public face of the booking app: a clear promise up front (fleet ready, schedule fixed, a calm trip), a one-tap booking button, the fleet lineup from Hiace to bus, and trust signals like the 4.7 customer rating and 500+ trips finished on time.",
           shot: "assets/img/projects/506-trans-cover.webp",
@@ -165,28 +173,33 @@ window.PORTFOLIO = {
       sections: [
         {
           role: "webdev",
+          slot: "architecture",
           heading: "Four models",
           body: "The tool sends each user story to four LLMs through the OpenRouter API (Llama 3.3 70B, Gemini 2.5 Flash, GPT-4.1 Mini and Claude 4.5 Haiku), so their Gherkin output can be compared side by side.",
           image: "1555066931-4365d14bab8c"
         },
         {
           role: "qa",
+          slot: "metrics",
           heading: "Scoring the output",
           body: "Generated scenarios are only useful if they're right. I built Python evaluation pipelines using METEOR and Sentence-BERT that score every AI-generated scenario against reference test cases automatically.",
           image: "1551288049-bebda4e38f71"
         },
         {
           role: "qa",
+          slot: "planning",
           heading: "Testing the tool",
           body: "I designed and manually executed 32 test cases using Use Case Testing, and wrote a test plan covering scope, cases and a Threats to Validity analysis."
         },
         {
           role: "webdev",
+          slot: "features",
           heading: "Into the backlog",
           body: "Generated scenarios export straight into JIRA product backlogs. Along the way I fixed project-state and duplicate-export bugs in that integration."
         },
         {
           role: "webdev",
+          slot: "features",
           heading: "The app",
           body: "A focused workspace: paste a user story or start from a template, pick the model, and send. Results can be tied to a JIRA project and epic before exporting.",
           shot: "assets/img/projects/specweave-cover.webp",
@@ -209,18 +222,21 @@ window.PORTFOLIO = {
       sections: [
         {
           role: "sa",
+          slot: "modelling",
           heading: "Product documentation",
           body: "I wrote the System Architecture, Functional Topology and Entity Relationship Diagram documentation for CRM products, giving QA and engineering one shared technical reference for test planning.",
           image: "1558494949-ef010cbdcc31"
         },
         {
           role: "pbd",
+          slot: "market",
           heading: "Market & competitor analysis",
           body: "I benchmarked CRM and omnichannel platforms and conducted market research. The findings fed into the quality standards for Infomedia's own products.",
           image: "1460925895917-afdab827c52f"
         },
         {
           role: "pbd",
+          slot: "backlog",
           heading: "Backlog management",
           body: "I wrote product backlogs and acceptance criteria for management systems in Gherkin. Given / When / Then reads like plain language for business stakeholders and maps directly onto test cases for QA, so everyone reviews the same text.",
           code: "Feature: Ticket assignment\n\n  Scenario: Online agent receives a new ticket\n    Given an agent is marked as online\n    When a customer submits a new ticket\n    Then the ticket is assigned to that agent\n    And the agent is notified",
@@ -228,11 +244,13 @@ window.PORTFOLIO = {
         },
         {
           role: "pbd",
+          slot: "market",
           heading: "WhatsApp Business Calling",
           body: "I researched and documented how the WhatsApp Business Calling mechanism works, as a reference for the omnichannel product team."
         },
         {
           role: "sa",
+          slot: "validation",
           heading: "User manual guide",
           body: "I wrote an internal manual guide and published it in GitBook as the team's reference documentation.",
           image: "1434030216411-0b793f4b4173"
@@ -253,11 +271,13 @@ window.PORTFOLIO = {
       tools: ["Figma"],
       sections: [
         {
+          slot: "flows",
           heading: "Information architecture",
           body: "Before designing screens, I created the app's information architecture: how features are grouped and how people move between them.",
           image: "1586717791821-3f44a563fa4c"
         },
         {
+          slot: "design",
           heading: "Every feature",
           body: "I designed the interface for all of FlicknFit's features, from outfit recommendations to local brand discovery.",
           image: "1490481651871-ab68de25d43d"
@@ -278,6 +298,7 @@ window.PORTFOLIO = {
       tools: ["Figma"],
       sections: [
         {
+          slot: "testing",
           heading: "Design & iterate",
           body: "I designed the application and ran testing rounds, feeding what I learned back into the next iteration.",
           image: "1561070791-2526d30994b5"
@@ -298,6 +319,7 @@ window.PORTFOLIO = {
       tools: ["Figma"],
       sections: [
         {
+          slot: "design",
           heading: "Web + mobile",
           body: "I designed the interface for both the SIMPKL website and its mobile application.",
           image: "1559028012-481c04fa702d"
@@ -322,23 +344,27 @@ window.PORTFOLIO = {
       tools: ["Figma"],
       sections: [
         {
+          slot: "flows",
           heading: "User flows",
           body: "I mapped the healthcare user flows for both the website and the mobile app before moving to screens.",
           image: "1581291518857-4e27b48ff24e"
         },
         {
+          slot: "design",
           heading: "Website",
           body: "The admin website for the disease research database. The dashboard tracks uploaded heartbeat records, myocardial infarction and arrhythmia data, and daily uploads, with an activity log of what operators add. Separate pages handle users, diseases, approvals and adding new data.",
           shot: "assets/img/projects/humic-website.webp",
           device: "browser"
         },
         {
+          slot: "design",
           heading: "Mobile app",
           body: "The mobile app opens the same database to everyone: search for a disease, learn what HealthCare is and what it offers, and browse popular diseases with their record counts.",
           shot: "assets/img/projects/humic-mobile.webp",
           device: "phone"
         },
         {
+          slot: "outcome",
           heading: "Copyright",
           body: "Both designs received a Copyright Registration Letter: one for the healthcare website, one for the mobile application. I also wrote the documentation report for the work."
         }

@@ -264,6 +264,22 @@ button { font: inherit; color: inherit; }
 .case-block figure { margin: 40px 0 0; border-radius: var(--radius); overflow: hidden; background: var(--surface); }
 .case-block figure img { width: 100%; aspect-ratio: 16 / 8; object-fit: cover; }
 
+/* Case-study structure: numbered part label, and "to fill" boxes in draft view */
+.case-kicker { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px; color: var(--muted); }
+.case-kicker::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+.case-todo { padding-top: 40px; }
+.todo-box { padding: 24px 28px; border: 1.5px dashed var(--line); border-radius: var(--radius); background: repeating-linear-gradient(-45deg, transparent 0 12px, rgba(214, 213, 208, 0.25) 12px 24px); }
+.todo-box .mono { color: var(--red); }
+.todo-box h3 { margin: 10px 0 6px; font-size: clamp(22px, 2.6vw, 30px); font-weight: 400; letter-spacing: -0.02em; text-transform: uppercase; }
+.todo-box p { margin: 0; max-width: 640px; color: var(--muted); }
+.draft-banner {
+  position: fixed; left: 50%; bottom: 16px; z-index: 70; transform: translateX(-50%);
+  width: max-content; max-width: calc(100% - 32px);
+  padding: 10px 16px; border-radius: 999px;
+  background: var(--red); color: var(--offwhite); font-size: 11px; text-align: center;
+  box-shadow: 0 10px 30px rgba(25, 25, 25, 0.25);
+}
+
 /* Role tabs on projects with more than one role */
 .role-tabs {
   position: sticky; top: 76px; z-index: 5;
